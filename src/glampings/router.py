@@ -2,9 +2,8 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy import select, insert
 from sqlalchemy.ext.asyncio import AsyncSession
 from database import get_async_session
-from models import glamping, rental
-from schemas import GlampingCreate
-from schemas import RentalCreate
+from glampings.models import glamping, rental
+from glampings.schemas import GlampingCreate, RentalCreate
 router = APIRouter(prefix="/glamping", tags=["Glamping"])
 
 

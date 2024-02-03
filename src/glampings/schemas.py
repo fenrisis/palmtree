@@ -1,8 +1,6 @@
 from pydantic import BaseModel
-from typing import Optional, List
+from typing import Optional, Dict, Any
 from datetime import datetime
-import json
-
 
 class GlampingBase(BaseModel):
     name: str
@@ -10,20 +8,17 @@ class GlampingBase(BaseModel):
     price_per_night: float
     capacity: int
     location: str
-    amenities: Optional[json] = None
-
+    amenities: Optional[Dict[str, Any]] = None  # Используйте Dict для JSON объектов
 
 class GlampingCreate(GlampingBase):
     pass
-
 
 class Glamping(GlampingBase):
     id: int
     owner_id: int
 
     class Config:
-        orm_mode = True
-
+        from_attributes = True
 
 class RentalBase(BaseModel):
     user_id: int
@@ -33,13 +28,11 @@ class RentalBase(BaseModel):
     total_cost: float
     status: str
 
-
 class RentalCreate(RentalBase):
     pass
-
 
 class Rental(RentalBase):
     id: int
 
     class Config:
-        orm_mode = True
+        from_attributes = True
