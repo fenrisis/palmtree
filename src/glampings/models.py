@@ -2,7 +2,7 @@ from sqlalchemy import Table, Column, Integer, String, TIMESTAMP, MetaData, Fore
 
 metadata = MetaData()
 
-# Таблица для глемпингов
+# Glampings Table
 glamping = Table(
     "glamping",
     metadata,
@@ -16,7 +16,7 @@ glamping = Table(
     Column("owner_id", Integer, ForeignKey("user.id")),
 )
 
-# Таблица для аренды
+# Rent Table
 rental = Table(
     "rental",
     metadata,
