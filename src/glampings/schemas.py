@@ -9,7 +9,11 @@ class GlampingBase(BaseModel):
     price_per_night: float
     capacity: int
     location: str
-    amenities: Optional[Dict[str, Any]] = None  # Используйте Dict для JSON объектов
+    amenities: Optional[Dict[str, Any]] = None
+    owner_id: int
+
+    class Config:
+        from_attributes = True
 
 
 class GlampingCreate(GlampingBase):
@@ -18,10 +22,6 @@ class GlampingCreate(GlampingBase):
 
 class Glamping(GlampingBase):
     id: int
-    owner_id: int
-
-    class Config:
-        from_attributes = True
 
 
 class RentalBase(BaseModel):
@@ -32,6 +32,9 @@ class RentalBase(BaseModel):
     total_cost: float
     status: str
 
+    class Config:
+        from_attributes = True
+
 
 class RentalCreate(RentalBase):
     pass
@@ -39,6 +42,3 @@ class RentalCreate(RentalBase):
 
 class Rental(RentalBase):
     id: int
-
-    class Config:
-        from_attributes = True
